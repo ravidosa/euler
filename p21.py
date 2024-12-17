@@ -10,36 +10,36 @@ for i in range(2, N):
         path = [i]
         while path[-1] not in proper_divisors_dic and 1 < path[-1] < N:
 
-            temp = path[-1]
+            curr = path[-1]
             factor_dic = {}
             p = 2
-            while p <= math.sqrt(temp):
-                if temp % p == 0:
-                    temp //= p
+            while p <= math.sqrt(curr):
+                if curr % p == 0:
+                    curr //= p
                     factor_dic[p] = factor_dic.get(p, 0) + 1
                 else:
                     p += 1
-            factor_dic[temp] = factor_dic.get(temp, 0) + 1
+            factor_dic[curr] = factor_dic.get(curr, 0) + 1
 
             primes = list(factor_dic.keys())
-            proper_divisors = []
+            divisors = []
             num_factors = len(factor_dic)
-            pow = {factor: 0 for factor in factor_dic}
+            exp = {factor: 0 for factor in factor_dic}
             finished = False
             while not finished:
-                proper_divisors.append(functools.reduce(lambda x, y: x * y, [factor ** pow[factor] for factor in factor_dic], 1))
-                i = 0
+                divisors.append(functools.reduce(lambda x, y: x * y, [factor ** exp[factor] for factor in factor_dic], 1))
+                j = 0
                 while True:
-                    pow[primes[i]] += 1
-                    if pow[primes[i]] <= factor_dic[primes[i]]:
+                    exp[primes[j]] += 1
+                    if exp[primes[j]] <= factor_dic[primes[j]]:
                         break
-                    pow[primes[i]] = 0
-                    i += 1
-                    if i >= num_factors:
+                    exp[primes[j]] = 0
+                    j += 1
+                    if j >= num_factors:
                         finished = True
                         break
-            proper_divisors_dic[path[-1]] = sum(proper_divisors) - path[-1]
-            path.append(sum(proper_divisors) - path[-1])
+            proper_divisors_dic[path[-1]] = sum(divisors) - path[-1]
+            path.append(sum(divisors) - path[-1])
             
         if len(path) >= 3 and path[-1] == path[-3]:
             amicable.add(path[-1])

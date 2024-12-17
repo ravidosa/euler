@@ -1,15 +1,12 @@
-import time, math, functools
+import time, math
 
-N = 500
+N = 4
 
 t0 = time.time()
-factor_dic = {}
-divisors = 0
-
-i = (N + 1) // math.sqrt(2)
-while divisors < N:
-    ans = int((i * (i + 1)) // 2)
-    curr = ans
+N_distinct = [False] * N
+i = 2
+while True:
+    curr = i
     factor_dic = {}
     p = 2
     while p <= math.sqrt(curr):
@@ -19,7 +16,11 @@ while divisors < N:
         else:
             p += 1
     factor_dic[curr] = factor_dic.get(curr, 0) + 1
-    divisors = functools.reduce(lambda x, y: x * (factor_dic[y] + 1), factor_dic, 1)
+    N_distinct[0:N - 1] = N_distinct[1:N]
+    N_distinct[-1] = (len(factor_dic) == N)
+    if all(N_distinct):
+        ans = i - N + 1
+        break
     i += 1
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")

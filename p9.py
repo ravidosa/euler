@@ -4,9 +4,9 @@ N = 1000
 
 t0 = time.time()
 for a in range(1, N // 2):
-    if (N ** 2 // 2) % (a - 1000) == 0:
+    if (N ** 2 // 2) % (a - N) == 0:
         break
-b = (N ** 2 // 2) // (a - 1000) + 1000
+b = (N ** 2 // 2) // (a - N) + N
 c = int(math.sqrt(a ** 2 + b ** 2))
 ans = a * b * c
 t1 = time.time()
