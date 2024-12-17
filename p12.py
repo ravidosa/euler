@@ -4,9 +4,10 @@ N = 500
 
 t0 = time.time()
 factor_dic = {}
+divisors = 0
 
 i = (N + 1) // math.sqrt(2)
-while functools.reduce(lambda x, y: x * (factor_dic[y] + 1), factor_dic, 1) < N:
+while divisors < N:
     ans = int((i * (i + 1)) // 2)
     temp = ans
     factor_dic = {}
@@ -18,6 +19,7 @@ while functools.reduce(lambda x, y: x * (factor_dic[y] + 1), factor_dic, 1) < N:
         else:
             p += 1
     factor_dic[temp] = factor_dic.get(temp, 0) + 1
+    divisors = functools.reduce(lambda x, y: x * (factor_dic[y] + 1), factor_dic, 1)
     i += 1
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")

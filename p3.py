@@ -1,4 +1,5 @@
 import time, math
+
 N = 600851475143
 
 t0 = time.time()
