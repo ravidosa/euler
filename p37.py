@@ -1,12 +1,5 @@
-import time, math
-
-def is_prime(i):
-    if i <= 1:
-        return False
-    for p in range(2, math.floor(math.sqrt(i)) + 1):
-        if i % p == 0:
-            return False
-    return True
+import time
+from utils import is_prime
 
 t0 = time.time()
 truncatable = []
@@ -18,6 +11,5 @@ while len(truncatable) < 11:
                 truncatable.append(i)
     i += 1
 ans = sum(truncatable)
-print(truncatable)
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")
