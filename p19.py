@@ -10,7 +10,6 @@ for year in range(N1, N2 + 1):
     s = 0
     for month in range(12):
         if day == 0:
-            #print(year, month + 1, day + 1)
             ans += 1
             s += 1
         day += (30 if month in [3, 5, 8, 10] else 31 if month != 1 else 28 + (1 if year % 400 == 0 or (year % 100 != 0 and year % 4 == 0) else 0))

@@ -1,5 +1,5 @@
 import time, math
-from utils.primes import is_prime
+from utils.primes import is_prime, next_prime
 
 E = 800800
 B = 800800
@@ -18,8 +18,8 @@ while p * math.log10(p) <= 0.5 * thresh:
                 high = q - 1
             else:
                 low = q + 1
-        while not is_prime(q):
-            q += 1
+        if not is_prime(q):
+            q = next_prime(q)
         if p == 2:
             sieve = [1 for _ in range(q)]
             sieve[0:2] = [0] * 2

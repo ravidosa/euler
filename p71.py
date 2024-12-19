@@ -1,8 +1,7 @@
 import time, math
 
 N = 1000000
-n = 3
-d = 7
+n, d = 3, 7
 
 t0 = time.time()
 best_left_approx = 0

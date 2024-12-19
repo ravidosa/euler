@@ -31,6 +31,12 @@ def is_prime(n):
             return False
     return True
 
+def next_prime(p):
+    p += 1
+    while not is_prime(p):
+        p += 1
+    return p
+
 def prime_factorization(n):
     factor_dic = {}
     p = 2

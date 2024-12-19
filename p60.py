@@ -1,5 +1,5 @@
 import time
-from utils.primes import is_prime
+from utils.primes import is_prime, next_prime
 
 N = 5
 
@@ -29,8 +29,6 @@ while not ans or p < bound:
                     if len(clique) == N - 1:
                         ans = min(ans, sum(clique) + p) if ans else sum(clique) + p
     primes_check[p % 3].append(p)
-    p += 1
-    while not is_prime(p):
-        p += 1
+    p = next_prime(p)
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")
