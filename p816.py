@@ -9,7 +9,7 @@ def dist(p1, p2):
 
 def min_dist(points):
     if len(points) <= 3:
-        return min([dist(p1, p2) for p1 in points for p2 in points if p1 != p2])
+        return min(map(lambda pair: dist(pair[0], pair[1]), itertools.combinations(points, 2)))
     else:
         points.sort(key=lambda p: p[0])
         L = points[:len(points) // 2]
@@ -18,7 +18,7 @@ def min_dist(points):
         B_L = [p for p in L if dist(points[len(points) // 2], p) <= delta]
         B_R = [p for p in R if dist(points[len(points) // 2], p) <= delta]
         R.sort(key=lambda p: p[1])
-        return min(delta, min([dist(p_L, p_R) for p_L in B_L for p_R in B_R], default=delta))
+        return min(delta, min(map(lambda pair: dist(pair[0], pair[1]), itertools.product(B_L, B_R)), default=delta))
 
 t0 = time.time()
 s_2n = s_0

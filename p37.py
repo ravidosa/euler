@@ -1,11 +1,12 @@
 import time
-from utils import is_prime
+from utils.primes import is_prime
+from utils.digits import odd_digits
 
 t0 = time.time()
 truncatable = []
 i = 11
 while len(truncatable) < 11:
-    if [int(digit) % 2 == 1 for digit in str(i)]:
+    if odd_digits(i) or (str(i)[0] == "2" and odd_digits(int(str(i)[1:]))):
         if is_prime(i):
             if all([is_prime(int(str(i)[j:])) for j in range(1, len(str(i)))]) and all([is_prime(int(str(i)[:j])) for j in range(1, len(str(i)))]):
                 truncatable.append(i)

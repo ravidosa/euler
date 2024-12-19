@@ -5,6 +5,6 @@ N = len(names)
 
 t0 = time.time()
 names = sorted(names[1:-1].split("\",\""))
-ans = sum([(i + 1) * sum([ord(letter) - 64 for letter in names[i]]) for i in range(len(names))])
+ans = sum(map(lambda pair: (pair[0] + 1) * sum(map(lambda letter: ord(letter) - 64, pair[1])), enumerate(names)))
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")

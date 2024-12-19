@@ -1,5 +1,5 @@
 import time
-from utils import is_prime
+from utils.primes import is_prime
 
 N = 1000000
 

@@ -1,5 +1,5 @@
 import time, math
-from utils import is_prime
+from utils.primes import is_prime
 
 t0 = time.time()
 i = 9

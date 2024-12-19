@@ -104,6 +104,6 @@ k = 10
 
 t0 = time.time()
 nums = N.split("\n")
-ans = str(sum([int(i[:k + len(str(len(nums))) + 1]) for i in nums]))[:k]
+ans = str(sum(map(lambda i: int(i[:k + len(str(len(nums))) + 1]), nums)))[:k]
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")

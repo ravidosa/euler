@@ -1,8 +1,9 @@
 import time
+from utils.primes import totient_up_to
 
-N = 100
+N = 1000000
 
 t0 = time.time()
-ans = (N * (N + 1) // 2) ** 2 - N * (N + 1) * (2 * N + 1) // 6
+ans = sum(totient_up_to(N)[2:])
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")

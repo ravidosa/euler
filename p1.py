@@ -5,7 +5,7 @@ div_by = [3, 5]
 
 # naive implementation with list comprehension
 t0 = time.time()
-ans = sum([i for i in range(1, N) if any([i % factor == 0 for factor in div_by])])
+ans = sum(map(lambda i : i if any(map(lambda factor: i % factor == 0, div_by)) else 0, range(1, N)))
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")
 
