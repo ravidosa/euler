@@ -1,4 +1,4 @@
-import time, math
+import time
 from utils.sequences import is_triangular
 
 words = open("words.txt", "r").read()

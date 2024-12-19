@@ -4,7 +4,7 @@ def hand_rank(hand):
     values = "23456789TJQKA"
     suits = hand[1::3]
     ranks = hand[::3]
-    sorted_ranks = "".join(sorted(ranks, key=lambda c: values.index(c)))
+    sorted_ranks = "".join(sorted(ranks, values.index))
 
     suit_counter = collections.Counter(suits)
     rank_counter = collections.Counter(ranks)
