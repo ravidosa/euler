@@ -39,3 +39,13 @@ def square_root_digits(n, precision):
         rem = c - y
         dig.append(x)
     return dig
+
+def decimal_partition(n):
+    if n == None:
+        yield []
+    else:
+        s = str(n)
+        for i in range(1, len(s) + 1):
+            prev, next = int(s[:i]), int(s[i:]) if i != len(s) else None
+            for p in decimal_partition(next):
+                yield [prev] + p
