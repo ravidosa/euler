@@ -1,4 +1,4 @@
-import time, math
+import time
 
 N = 10 ** 17
 K = 9 ** 17

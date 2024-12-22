@@ -14,12 +14,12 @@ def generate_n_primes(n):
     return primes
 
 def generate_primes_up_to_n(n):
-    sieve = [i for i in range(n)]
+    sieve = [i for i in range(n + 1)]
     sieve[1] = 0
     p = 2
     while p <= math.sqrt(n):
         if sieve[p] != 0:
-            sieve[p * p:((n - 1) // p + 1) * p:p] = [0] * ((n - 1) // p - p + 1)
+            sieve[p * p:(n // p + 1) * p:p] = [0] * (n // p - p + 1)
         p += 1
     return [i for i in sieve if i != 0]
 
@@ -88,6 +88,26 @@ def totient_up_to(n):
             sieve[p::p] = [s - s // p for s in sieve[p::p]]
         p += 1
     return sieve
+
+def primality_up_to(n):
+    sieve = [True for _ in range(n + 1)]
+    sieve[:2] = [False] * 2
+    p = 2
+    while p <= math.sqrt(n):
+        if sieve[p] != 0:
+            sieve[p * p:(n // p + 1) * p:p] = [False] * (n // p - p + 1)
+        p += 1
+    return sieve
+
+def prime_pi_up_to(n):
+    primality = primality_up_to(n)
+    pp = [0] * (n + 1)
+    p_index = 0
+    for i in range(1, n + 1):
+        pp[i] = p_index
+        if primality[i]:
+            p_index += 1
+    return pp
 
 def proper_divisors(n):
     return divisors(n)[:-1]
