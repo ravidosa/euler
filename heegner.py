@@ -2,10 +2,9 @@ import time, mpmath
 
 N = 1000
 
+t0 = time.time()
 minerr = 1
 ans = 0
-
-t0 = time.time()
 mpmath.mp.prec = 175
 for i in range(-N, N + 1):
     if i < 0 or not float(mpmath.mp.sqrt(i)).is_integer():

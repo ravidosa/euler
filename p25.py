@@ -4,12 +4,12 @@ N = 1000
 
 t0 = time.time()
 
-a_n_1 = 0
-a_n = 1
+fib_n_1 = 0
+fib_n = 1
 ans = 1
 
-while math.log10(a_n) + 1 < N:
-    a_n_1, a_n = a_n, a_n_1 + a_n
+while math.log10(fib_n) + 1 < N:
+    fib_n_1, fib_n = fib_n, fib_n_1 + fib_n
     ans += 1
 t1 = time.time()
 print(ans, str((t1 - t0) * 1000), "ms")

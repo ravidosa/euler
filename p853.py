@@ -1,5 +1,5 @@
 import time, math, itertools, functools
-from utils.primes import generate_primes_up_to_n, prime_factorization
+from utils.primes import generate_primes_up_to, prime_factorization
 
 N = 1000000000
 P = 120
@@ -7,16 +7,16 @@ P = 120
 t0 = time.time()
 ans = 0
 basis = {}
-for m in generate_primes_up_to_n(P ** 2):
-    a_n_1 = 0
-    a_n = 1
+for m in generate_primes_up_to(P ** 2):
+    fib_n_1 = 0
+    fib_n = 1
     pi = 0
     while True:
-        a_n_1, a_n = a_n, (a_n_1 + a_n) % m
+        fib_n_1, fib_n = fib_n, (fib_n_1 + fib_n) % m
         pi += 1
-        if (a_n_1 == 0 and a_n == 1) or pi > P:
+        if (fib_n_1 == 0 and fib_n == 1) or pi > P:
             break
-    if a_n_1 == 0 and a_n == 1 and P % pi == 0:
+    if fib_n_1 == 0 and fib_n == 1 and P % pi == 0:
         basis[m] = pi
 primes = list(basis.keys())
 max_exp = list(map(lambda p: range(prime_factorization(P / basis[p]).get(p, 0) + 2), primes))

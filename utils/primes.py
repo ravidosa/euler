@@ -1,4 +1,4 @@
-import math, functools
+import math, functools, itertools
 
 prod = lambda x, y: x * y
 
@@ -13,7 +13,7 @@ def generate_n_primes(n):
         i += 1
     return primes
 
-def generate_primes_up_to_n(n):
+def generate_primes_up_to(n):
     sieve = [i for i in range(n + 1)]
     sieve[1] = 0
     p = 2
@@ -120,3 +120,13 @@ def is_abundant(n):
 
 def is_deficient(n):
     return sum(proper_divisors(n)) < n
+
+def num_squarefree_up_to(n):
+    num_squarefree = n
+    square_primes = list(map(lambda i: i ** 2, generate_primes_up_to(math.floor(math.sqrt(n)))))
+    for intersection in range(1, len(square_primes) + 1):
+        for subset in itertools.combinations(square_primes, intersection):
+            a1 = math.lcm(*subset)
+            m = n // a1
+            num_squarefree -= (-1) ** (intersection + 1) * m
+    return num_squarefree

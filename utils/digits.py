@@ -1,9 +1,15 @@
 import math, itertools
 
+def fingerprint(n):
+    return "".join(sorted(str(n)))
+
+def digit_count(n):
+    return [str(n).count(str(i)) for i in range(10)]
+
 def is_permutations(terms):
     if len(terms) <= 1:
         return True
-    return all(map(lambda pair: "".join(sorted(str(pair[0]))) == "".join(sorted(str(pair[1]))), itertools.combinations(terms, 2)))
+    return all(map(lambda pair: fingerprint(pair[0]) == fingerprint(pair[1]), itertools.combinations(terms, 2)))
 
 def sum_digits(n, func=lambda x: x):
     return sum(map(lambda x: func(int(x)), str(n)))
@@ -49,3 +55,9 @@ def decimal_partition(n):
             prev, next = int(s[:i]), int(s[i:]) if i != len(s) else None
             for p in decimal_partition(next):
                 yield [prev] + p
+
+def increasing(n):
+    return all(map(lambda i: str(n)[i] >= str(n)[i - 1], range(1, len(str(n)))))
+
+def decreasing(n):
+    return all(map(lambda i: str(n)[i] <= str(n)[i - 1], range(1, len(str(n)))))
