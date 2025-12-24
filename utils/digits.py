@@ -6,6 +6,15 @@ def fingerprint(n):
 def digit_count(n):
     return [str(n).count(str(i)) for i in range(10)]
 
+def reverse(n):
+    return int(str(n)[::-1])
+
+def all_even(n):
+    return all(map(lambda d: int(d) % 2 == 0, str(n)))
+
+def all_odd(n):
+    return all(map(lambda d: int(d) % 2 == 1, str(n)))
+
 def is_permutations(terms):
     if len(terms) <= 1:
         return True
